@@ -43,4 +43,4 @@ GNU AGPL v3. See [LICENSE](LICENSE).
 
 ## Citing
 
-See [CITATION.cff](CITATION.cff).
+See [CITATION.bib](CITATION.bib).
