@@ -1,0 +1,14 @@
+participant Mobiltelefon
+participant ESP32-C5
+
+loop Verfügbarkeitsbroadcasts
+  ESP32-C5-->>Mobiltelefon: Advertising
+end
+Mobiltelefon->>ESP32-C5: Verbindungsanfrage
+ESP32-C5-->>Mobiltelefon: Verbindungsaufbau
+
+loop GATT Datenübertragung
+    ESP32-C5->>Mobiltelefon: **Metadaten des WLAN-Verkehrs**
+end
+
+Mobiltelefon->>ESP32-C5: Verbindungsabbruch

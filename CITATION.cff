@@ -1,0 +1,43 @@
+cff-version: 1.2.0
+title: Wallbreaker
+message: >-
+  Please cite this software using the metadata from
+  "preferred-citation".
+type: software
+authors:
+  - given-names: Alexander
+    family-names: Betke
+    affiliation: Polizei Berlin
+repository-code: 'https://git.zeitvertreib.vip/AlexInABox/wallbreaker'
+abstract: >
+  Portable ESP32-based passive Wi-Fi signal analysis system
+  for locating active WLAN-capable devices during police
+  search operations. A no_std Rust firmware on the
+  microcontroller captures 802.11 packets in monitor mode
+  and streams source MAC, destination MAC and RSSI metadata
+  over BLE to a Flutter mobile application.
+keywords:
+  - wifi
+  - signal-analysis
+  - esp32
+  - monitor-mode
+  - rust
+  - flutter
+license: AGPL-3.0
+date-released: '2026-07-31'
+preferred-citation:
+  type: thesis
+  authors:
+    - family-names: Betke
+      given-names: Alexander
+  title: >-
+    Entwicklung eines Mikrocontroller-Systems zur passiven WLAN-Signalanalyse
+    bei polizeilichen Durchsuchungsmaßnahmen
+  year: 2026
+  month: 7
+  thesis-type: Bachelor
+  department: 'Duales Studium Wirtschaft · Technik, Informatik'
+  institution:
+    name: Hochschule für Wirtschaft und Recht Berlin
+    city: Berlin
+    country: DE

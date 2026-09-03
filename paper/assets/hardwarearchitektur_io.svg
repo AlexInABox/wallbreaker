@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 800 310"
+   width="800"
+   height="310"
+   style="background: #ffffff; font-family: 'Liberation Sans', 'DejaVu Sans', 'Arial', sans-serif;"
+   version="1.1"
+   id="svg24"
+   sodipodi:docname="hardwarearchitektur_io.svg"
+   inkscape:version="1.4.3 (0d15f75042, 2025-12-25)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview24"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="1.5459122"
+     inkscape:cx="247.75016"
+     inkscape:cy="251.30793"
+     inkscape:window-width="1920"
+     inkscape:window-height="1190"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg24" />
+  <defs
+     id="defs1">
+    <marker
+       id="arrow-dark"
+       viewBox="0 0 10 10"
+       refX="8"
+       refY="5"
+       markerWidth="6"
+       markerHeight="6"
+       orient="auto-start-reverse">
+      <path
+         d="M 0 0 L 10 5 L 0 10 z"
+         fill="#2c3e50"
+         id="path1" />
+    </marker>
+  </defs>
+  <!-- INPUTS -->
+  <text
+     x="110"
+     y="32"
+     font-size="13.5"
+     font-weight="bold"
+     fill="#2c3e50"
+     text-anchor="middle"
+     id="text1">Eingaben (Inputs)</text>
+  <rect
+     x="20"
+     y="46"
+     width="180"
+     height="65"
+     rx="3"
+     fill="#fafafa"
+     stroke="#2c3e50"
+     stroke-width="1.2"
+     id="rect1" />
+  <text
+     x="110"
+     y="66"
+     font-size="12"
+     font-weight="bold"
+     fill="#2c3e50"
+     text-anchor="middle"
+     id="text2">802.11 RF-Signale</text>
+  <text
+     x="110"
+     y="83"
+     font-size="10.5"
+     fill="#555555"
+     text-anchor="middle"
+     id="text3">WLAN Datenverkehr im Raum</text>
+  <text
+     x="110"
+     y="98"
+     font-size="10"
+     fill="#666666"
+     text-anchor="middle"
+     id="text4">(2,4 GHz &amp; 5 GHz)</text>
+  <rect
+     x="20"
+     y="126"
+     width="180"
+     height="65"
+     rx="3"
+     fill="#fafafa"
+     stroke="#2c3e50"
+     stroke-width="1.2"
+     id="rect4" />
+  <text
+     x="110"
+     y="149"
+     font-size="12"
+     font-weight="bold"
+     fill="#2c3e50"
+     text-anchor="middle"
+     id="text5">Hardware-Timer</text>
+  <text
+     x="110"
+     y="167"
+     font-size="10.5"
+     fill="#555555"
+     text-anchor="middle"
+     id="text6">100 ms Kanal-Hopping Takt</text>
+  <rect
+     x="20"
+     y="206"
+     width="180"
+     height="65"
+     rx="3"
+     fill="#fafafa"
+     stroke="#2c3e50"
+     stroke-width="1.2"
+     id="rect6" />
+  <text
+     x="110"
+     y="229"
+     font-size="12"
+     font-weight="bold"
+     fill="#2c3e50"
+     text-anchor="middle"
+     id="text7">BLE Kontroll-Befehle</text>
+  <text
+     x="110"
+     y="247"
+     font-size="10.5"
+     fill="#555555"
+     text-anchor="middle"
+     id="text8">MTU-Aushandlung (247 Byte)</text>
+  <!-- Arrows Input to Processing -->
+  <line
+     x1="200"
+     y1="79"
+     x2="258"
+     y2="129"
+     stroke="#2c3e50"
+     stroke-width="1.5"
+     marker-end="url(#arrow-dark)"
+     id="line8" />
+  <line
+     x1="200"
+     y1="159"
+     x2="258"
+     y2="159"
+     stroke="#2c3e50"
+     stroke-width="1.5"
+     marker-end="url(#arrow-dark)"
+     id="line9" />
+  <line
+     x1="200"
+     y1="239"
+     x2="258"
+     y2="189"
+     stroke="#2c3e50"
+     stroke-width="1.5"
+     marker-end="url(#arrow-dark)"
+     id="line10" />
+  <!-- PROCESSING CORE -->
+  <rect
+     x="263"
+     y="46"
+     width="274"
+     height="225"
+     rx="4"
+     fill="#ffffff"
+     stroke="#2c3e50"
+     stroke-width="1.5"
+     id="rect10" />
+  <rect
+     x="263"
+     y="46"
+     width="274"
+     height="34"
+     rx="4"
+     fill="#eaeded"
+     stroke="#2c3e50"
+     stroke-width="1.5"
+     id="rect11" />
+  <text
+     x="400"
+     y="68"
+     font-size="13px"
+     font-weight="bold"
+     fill="#2c3e50"
+     text-anchor="middle"
+     id="text11">Verarbetung auf dem ESP32</text>
+  <!-- Row 1: Paketfilterung -->
+  <rect
+     x="268"
+     y="86"
+     width="264"
+     height="52"
+     rx="2"
+     fill="#fafafa"
+     stroke="#e0e0e0"
+     stroke-width="1"
+     id="rect12" />
+  <text
+     x="280"
+     y="106"
+     font-size="12"
+     font-weight="bold"
+     fill="#2c3e50"
+     id="text12">Paketfilterung für MAC &amp; RSSI</text>
+  <text
+     x="280"
+     y="124"
+     font-size="10.5"
+     fill="#555555"
+     id="text13">Extrahierung von Quell-/Ziel-MAC &amp; Signalstärke</text>
+  <!-- Grid Divider Line 1 -->
+  <line
+     x1="270"
+     y1="145"
+     x2="530"
+     y2="145"
+     stroke="#bdc3c7"
+     stroke-width="1"
+     stroke-dasharray="3,3"
+     id="line13" />
+  <!-- Row 2: Multiband Channel Hopping -->
+  <rect
+     x="268"
+     y="152"
+     width="264"
+     height="52"
+     rx="2"
+     fill="#fafafa"
+     stroke="#e0e0e0"
+     stroke-width="1"
+     id="rect13" />
+  <text
+     x="280"
+     y="172"
+     font-size="12"
+     font-weight="bold"
+     fill="#2c3e50"
+     id="text14">Multiband Kanal-Hopping</text>
+  <text
+     x="280"
+     y="190"
+     font-size="10.5"
+     fill="#555555"
+     id="text15">Frequenzwechsel über 2,4 GHz &amp; 5 GHz Bänder</text>
+  <!-- Grid Divider Line 2 -->
+  <line
+     x1="270"
+     y1="211"
+     x2="530"
+     y2="211"
+     stroke="#bdc3c7"
+     stroke-width="1"
+     stroke-dasharray="3,3"
+     id="line15" />
+  <!-- Row 3: BLE GATT Serververwaltung -->
+  <rect
+     x="268"
+     y="216"
+     width="264"
+     height="50"
+     rx="2"
+     fill="#fafafa"
+     stroke="#e0e0e0"
+     stroke-width="1"
+     id="rect15" />
+  <text
+     x="280"
+     y="236"
+     font-size="12"
+     font-weight="bold"
+     fill="#2c3e50"
+     id="text16">BLE GATT Serververwaltung</text>
+  <text
+     x="280"
+     y="254"
+     font-size="10.5"
+     fill="#555555"
+     id="text17">Verbindungsbereitschaft &amp; Endpoint-Management</text>
+  <!-- Arrows Processing to Output -->
+  <line
+     x1="537"
+     y1="119"
+     x2="593"
+     y2="99"
+     stroke="#2c3e50"
+     stroke-width="1.5"
+     marker-end="url(#arrow-dark)"
+     id="line17" />
+  <line
+     x1="537"
+     y1="199"
+     x2="593"
+     y2="219"
+     stroke="#2c3e50"
+     stroke-width="1.5"
+     marker-end="url(#arrow-dark)"
+     id="line18" />
+  <!-- OUTPUTS -->
+  <text
+     x="685"
+     y="32"
+     font-size="13.5"
+     font-weight="bold"
+     fill="#2c3e50"
+     text-anchor="middle"
+     id="text18">Ausgaben (Outputs)</text>
+  <rect
+     x="598"
+     y="59"
+     width="175"
+     height="80"
+     rx="3"
+     fill="#fafafa"
+     stroke="#2c3e50"
+     stroke-width="1.2"
+     id="rect18" />
+  <text
+     x="685"
+     y="84"
+     font-size="12"
+     font-weight="bold"
+     fill="#2c3e50"
+     text-anchor="middle"
+     id="text19">Extrahiere Paketdaten</text>
+  <text
+     x="685"
+     y="102"
+     font-size="10.5"
+     fill="#555555"
+     text-anchor="middle"
+     id="text20">Strukturierte Datensätze</text>
+  <text
+     x="685"
+     y="119"
+     font-size="10"
+     fill="#666666"
+     text-anchor="middle"
+     id="text21">(Quell-/Ziel-MAC &amp; RSSI)</text>
+  <rect
+     x="598"
+     y="179"
+     width="175"
+     height="80"
+     rx="3"
+     fill="#fafafa"
+     stroke="#2c3e50"
+     stroke-width="1.2"
+     id="rect21" />
+  <text
+     x="685"
+     y="204"
+     font-size="12"
+     font-weight="bold"
+     fill="#2c3e50"
+     text-anchor="middle"
+     id="text22">BLE GATT Stream</text>
+  <text
+     x="685"
+     y="222"
+     font-size="10.5"
+     fill="#555555"
+     text-anchor="middle"
+     id="text23">Gefilterte Notifications</text>
+  <text
+     x="685"
+     y="239"
+     font-size="10"
+     fill="#666666"
+     text-anchor="middle"
+     id="text24">(Nutzdaten-Stream an App)</text>
+</svg>

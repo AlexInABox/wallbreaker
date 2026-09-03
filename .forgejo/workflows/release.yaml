@@ -1,0 +1,276 @@
+name: Release
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+jobs:
+  check-version:
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.cargo.outputs.version }}
+      release_exists: ${{ steps.check.outputs.exists }}
+      release_id: ${{ steps.check.outputs.id }}
+    steps:
+      - uses: https://github.com/actions/checkout@v6
+
+      - name: Get version from Cargo.toml
+        id: cargo
+        run: |
+          VERSION=$(grep '^version' Cargo.toml | head -1 | sed 's/.*"\(.*\)".*/\1/')
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Check if release exists
+        id: check
+        run: |
+          RESPONSE=$(curl -s -H "Authorization: token ${{ github.token }}" \
+            "${{ github.api_url }}/repos/${{ github.repository }}/releases/tags/v${{ steps.cargo.outputs.version }}")
+
+          if echo "$RESPONSE" | grep -q '"id":'; then
+            RELEASE_ID=$(echo "$RESPONSE" | python3 -c "import sys, json; print(json.load(sys.stdin).get('id', ''))")
+            if [ -n "$RELEASE_ID" ]; then
+              echo "exists=true" >> $GITHUB_OUTPUT
+              echo "id=$RELEASE_ID" >> $GITHUB_OUTPUT
+            else
+              echo "exists=false" >> $GITHUB_OUTPUT
+            fi
+          else
+            echo "exists=false" >> $GITHUB_OUTPUT
+          fi
+
+  build-firmware:
+    needs: check-version
+    runs-on: ubuntu-latest
+    steps:
+      - uses: https://github.com/actions/checkout@v6
+
+      - name: Get version from Cargo.toml
+        id: version
+        run: |
+          VERSION=$(grep '^version' Cargo.toml | head -1 | sed 's/.*"\(.*\)".*/\1/')
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Install ESP-IDF system prerequisites
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y git wget flex bison gperf python3 python3-pip python3-venv cmake ninja-build ccache libffi-dev libssl-dev dfu-util libusb-1.0-0
+
+      - name: Cache ESP-IDF repo and tools
+        id: cache-esp-idf
+        uses: https://github.com/actions/cache@v3
+        with:
+          path: |
+            ${{ github.workspace }}/esp-idf
+            ~/.espressif
+          key: esp-idf-v5.5.2-esp32
+
+      - name: Clone and Install ESP-IDF
+        run: |
+          if [ ! -d "${{ github.workspace }}/esp-idf" ]; then
+            echo "ESP-IDF not found, cloning and installing..."
+            git clone --recursive --depth 1 --shallow-submodules --branch v5.5.2 https://github.com/espressif/esp-idf.git ${{ github.workspace }}/esp-idf
+            cd ${{ github.workspace }}/esp-idf
+            ./install.sh esp32
+          else
+            echo "ESP-IDF already exists, skipping clone."
+            # Ensure the tools are also installed in home if workspace was kept but ~/.espressif was cleaned
+            if [ ! -d "$HOME/.espressif" ]; then
+              echo "~/.espressif not found, reinstalling tools..."
+              cd ${{ github.workspace }}/esp-idf
+              ./install.sh esp32
+            fi
+          fi
+
+      - name: Build ESP-IDF firmware
+        run: |
+          # Source export.sh to set up environment
+          . ${{ github.workspace }}/esp-idf/export.sh
+
+          # Build the firmware
+          cd firmware
+          idf.py reconfigure -DFIRMWARE_VERSION=${{ steps.version.outputs.version }}
+          idf.py build
+          cd build
+          esptool.py --chip esp32 merge_bin -o firmware.bin @flash_args
+
+      - name: Upload firmware artifact
+        uses: https://github.com/actions/upload-artifact@v3
+        with:
+          name: firmware
+          path: firmware/build/firmware.bin
+
+  build-application:
+    needs: check-version
+    name: Build Application - ${{ matrix.platform.os-name }}
+    strategy:
+      matrix:
+        platform:
+          - os-name: Linux-x86_64
+            target: x86_64-unknown-linux-gnu
+            artifact: wallbreaker
+            output_base: wallbreaker-linux-amd64
+
+          - os-name: Windows-x86_64
+            target: x86_64-pc-windows-gnu
+            artifact: wallbreaker.exe
+            output: wallbreaker-windows-amd64.exe
+
+    runs-on: ubuntu-latest
+    steps:
+      - uses: https://github.com/actions/checkout@v6
+
+      - name: Install Rust toolchain
+        uses: https://github.com/dtolnay/rust-toolchain@stable
+        with:
+          targets: ${{ matrix.platform.target }}
+
+      - uses: https://github.com/actions/cache@v5
+        with:
+          path: |
+            ~/.cargo/bin/
+            ~/.cargo/registry/index/
+            ~/.cargo/registry/cache/
+            ~/.cargo/git/db/
+            target/
+          key: ${{ runner.os }}-${{ matrix.platform.target }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+
+      - name: Install Linux dependencies
+        if: matrix.platform.target == 'x86_64-unknown-linux-gnu'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libgtk-3-dev libudev-dev
+
+      - name: Install MinGW cross-compilation toolchain
+        if: matrix.platform.target == 'x86_64-pc-windows-gnu'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gcc-mingw-w64-x86-64 g++-mingw-w64-x86-64
+
+      - name: Install cargo-deb
+        if: matrix.platform.target == 'x86_64-unknown-linux-gnu'
+        run: command -v cargo-deb >/dev/null 2>&1 || cargo install cargo-deb --locked
+
+      - name: Install cargo-generate-rpm
+        if: matrix.platform.target == 'x86_64-unknown-linux-gnu'
+        run: command -v cargo-generate-rpm >/dev/null 2>&1 || cargo install cargo-generate-rpm --locked
+
+      - name: Build binary
+        env:
+          CARGO_TARGET_X86_64_PC_WINDOWS_GNU_LINKER: x86_64-w64-mingw32-gcc
+        run: cargo build --release --target ${{ matrix.platform.target }}
+
+      - name: Create binary artifact
+        if: matrix.platform.output != '' && matrix.platform.output != null
+        run: |
+          cp target/${{ matrix.platform.target }}/release/${{ matrix.platform.artifact }} ${{ matrix.platform.output }}
+
+      - name: Create binary artifact (Linux)
+        if: matrix.platform.output_base != '' && matrix.platform.output_base != null
+        run: |
+          cp target/${{ matrix.platform.target }}/release/${{ matrix.platform.artifact }} ${{ matrix.platform.output_base }}
+
+      - name: Build .deb package
+        if: matrix.platform.target == 'x86_64-unknown-linux-gnu'
+        run: cargo deb --target ${{ matrix.platform.target }}
+
+      - name: Build .rpm package
+        if: matrix.platform.target == 'x86_64-unknown-linux-gnu'
+        run: cargo generate-rpm --target ${{ matrix.platform.target }}
+
+      - name: Upload binary artifact
+        if: matrix.platform.output != '' && matrix.platform.output != null
+        uses: https://github.com/actions/upload-artifact@v3
+        with:
+          name: ${{ matrix.platform.output }}
+          path: ${{ matrix.platform.output }}
+
+      - name: Upload binary artifact (Linux)
+        if: matrix.platform.output_base != '' && matrix.platform.output_base != null
+        uses: https://github.com/actions/upload-artifact@v3
+        with:
+          name: ${{ matrix.platform.output_base }}
+          path: ${{ matrix.platform.output_base }}
+
+      - name: Upload .deb artifact
+        if: matrix.platform.target == 'x86_64-unknown-linux-gnu'
+        uses: https://github.com/actions/upload-artifact@v3
+        with:
+          name: ${{ matrix.platform.output_base }}.deb
+          path: target/${{ matrix.platform.target }}/debian/*.deb
+
+      - name: Upload .rpm artifact
+        if: matrix.platform.target == 'x86_64-unknown-linux-gnu'
+        uses: https://github.com/actions/upload-artifact@v3
+        with:
+          name: ${{ matrix.platform.output_base }}.rpm
+          path: target/${{ matrix.platform.target }}/generate-rpm/*.rpm
+
+  release:
+    needs: [check-version, build-firmware, build-application]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: https://github.com/actions/checkout@v6
+
+      - name: Download all artifacts
+        uses: https://github.com/actions/download-artifact@v3
+        with:
+          path: artifacts
+
+      - name: Flatten artifacts
+        run: |
+          mkdir -p release-files
+          find artifacts -type f -exec cp {} release-files/ \;
+          ls -la release-files/
+
+      - name: Delete existing release
+        if: needs.check-version.outputs.release_exists == 'true'
+        run: |
+          curl -s -X DELETE \
+            -H "Authorization: token ${{ github.token }}" \
+            "${{ github.api_url }}/repos/${{ github.repository }}/releases/${{ needs.check-version.outputs.release_id }}"
+
+      - name: Create release
+        run: |
+          VERSION="${{ needs.check-version.outputs.version }}"
+
+          # Create release
+          RELEASE_JSON=$(curl -s -X POST \
+            -H "Authorization: token ${{ github.token }}" \
+            -H "Content-Type: application/json" \
+            "${{ github.api_url }}/repos/${{ github.repository }}/releases" \
+            -d "{
+              \"tag_name\": \"v$VERSION\",
+              \"target_commitish\": \"${{ github.sha }}\",
+              \"name\": \"v$VERSION\",
+              \"body\": \"Release v$VERSION of Wallbreaker.\",
+              \"draft\": false,
+              \"prerelease\": false
+            }")
+
+          # Extract release ID
+          RELEASE_ID=$(echo "$RELEASE_JSON" | python3 -c "import sys, json; print(json.load(sys.stdin).get('id', ''))")
+          if [ -z "$RELEASE_ID" ]; then
+            echo "Failed to create release or extract release ID"
+            echo "$RELEASE_JSON"
+            exit 1
+          fi
+
+          # Upload each file in release-files/
+          for file in release-files/*; do
+            if [ -f "$file" ]; then
+              filename=$(basename "$file")
+              echo "Uploading $filename..."
+              curl -s -X POST \
+                -H "Authorization: token ${{ github.token }}" \
+                -H "Content-Type: multipart/form-data" \
+                -F "attachment=@$file" \
+                "${{ github.api_url }}/repos/${{ github.repository }}/releases/$RELEASE_ID/assets?name=$filename"
+            fi
+          done

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="530 110 430 390" font-family="Berlin Type Office, Arial, sans-serif">
+  <rect x="530" y="110" width="430" height="390" fill="#f4f6fb" stroke="#002266" stroke-width="2"/>
+  <text x="745" y="142" font-size="18" font-weight="bold" fill="#002266" text-anchor="middle">Funkortung</text>
+  <rect x="880" y="175" width="44" height="250" fill="#b9bcc4" stroke="#666" stroke-width="1"/>
+  <rect x="889" y="278" width="26" height="44" rx="4" fill="#002266"/>
+  <text x="902" y="345" font-size="10" fill="#002266" text-anchor="middle">Asservat</text>
+  <rect x="894" y="286" width="16" height="30" rx="2" fill="white"/>
+  <path d="M863.4 346.0 A60 60 0 0 1 863.4 254.0" fill="none" stroke="#002266" stroke-width="3"/>
+  <path d="M831.3 384.3 A110 110 0 0 1 831.3 215.7" fill="none" stroke="#002266" stroke-width="3"/>
+  <path d="M799.1 422.6 A160 160 0 0 1 799.1 177.4" fill="none" stroke="#002266" stroke-width="3"/>
+  <circle cx="660" cy="300" r="26" fill="#4a6bbf"/>
+  <text x="660" y="304" font-size="12" fill="#ffffff" text-anchor="middle">ESP-32</text>
+  <text x="745" y="470" font-size="15" fill="#333" text-anchor="middle">Funkwellen durchdringen</text>
+  <text x="745" y="490" font-size="15" fill="#333" text-anchor="middle">die Baustruktur</text>
+</svg>

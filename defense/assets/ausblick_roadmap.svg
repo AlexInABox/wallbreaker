@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 340" font-family="Berlin Type Office, Arial, sans-serif">
+  <rect width="1000" height="340" fill="white"/>
+
+  <!-- baseline -->
+  <line x1="80" y1="120" x2="920" y2="120" stroke="#002266" stroke-width="3"/>
+
+  <!-- Stage 1 -->
+  <circle cx="200" cy="120" r="18" fill="#d73a2e"/>
+  <text x="200" y="80" font-size="18" font-weight="bold" fill="#002266" text-anchor="middle">Prototyp</text>
+  <text x="200" y="164" font-size="14" fill="#333" text-anchor="middle">ESP32-C5</text>
+  <text x="200" y="184" font-size="14" fill="#333" text-anchor="middle">Flutter, MagSafe</text>
+
+  <!-- Stage 2 -->
+  <circle cx="500" cy="120" r="18" fill="#f0b429"/>
+  <text x="500" y="80" font-size="18" font-weight="bold" fill="#002266" text-anchor="middle">Ausarbeitung</text>
+  <text x="500" y="164" font-size="14" fill="#333" text-anchor="middle">maßgeschneidertes PCB</text>
+  <text x="500" y="184" font-size="14" fill="#333" text-anchor="middle">Richtantenne, IP65</text>
+
+  <!-- Stage 3 -->
+  <circle cx="800" cy="120" r="18" fill="#2fa84f"/>
+  <text x="800" y="80" font-size="18" font-weight="bold" fill="#002266" text-anchor="middle">Zukunftstechnologien</text>
+  <text x="800" y="164" font-size="14" fill="#333" text-anchor="middle">Multi-Knoten + UWB</text>
+  <text x="800" y="184" font-size="14" fill="#333" text-anchor="middle">Edge-ML, Wi-Fi 6E/7</text>
+
+  <path d="M218 120 L482 120" fill="none" stroke="#002266" stroke-width="3" marker-end="url(#ah)"/>
+  <path d="M518 120 L782 120" fill="none" stroke="#002266" stroke-width="3" marker-end="url(#ah)"/>
+
+  <defs>
+    <marker id="ah" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0 0 L8 3 L0 6 Z" fill="#002266"/>
+    </marker>
+  </defs>
+</svg>

@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 650 300"
+   width="650"
+   height="300"
+   style="font-family:Inter, 'Liberation Sans', 'DejaVu Sans', sans-serif"
+   version="1.1"
+   id="svg16"
+   sodipodi:docname="mac_struktur.svg"
+   inkscape:version="1.4.3 (0d15f75042, 2025-12-25)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview16"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="1.9309454"
+     inkscape:cx="292.86172"
+     inkscape:cy="69.137117"
+     inkscape:window-width="3440"
+     inkscape:window-height="1368"
+     inkscape:window-x="1920"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg16"
+     showguides="true">
+    <sodipodi:guide
+       position="549.98965,226.46089"
+       orientation="1,0"
+       id="guide17"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="99.951037,200.04896"
+       orientation="1,0"
+       id="guide18"
+       inkscape:locked="false" />
+  </sodipodi:namedview>
+  <defs
+     id="defs1">
+    <marker
+       id="arrow"
+       viewBox="0 0 10 10"
+       refX="8"
+       refY="5"
+       markerWidth="6"
+       markerHeight="6"
+       orient="auto-start-reverse">
+      <path
+         d="M 0,0 10,5 0,10 Z"
+         fill="#111111"
+         id="path1" />
+    </marker>
+  </defs>
+  <!-- Labels OUI and NIC -->
+  <text
+     x="210"
+     y="32"
+     font-size="18px"
+     font-weight="bold"
+     fill="#111111"
+     text-anchor="middle"
+     id="text1">OUI</text>
+  <text
+     x="450"
+     y="32"
+     font-size="18px"
+     font-weight="bold"
+     fill="#111111"
+     text-anchor="middle"
+     id="text2">NIC</text>
+  <!-- Overbrace for OUI (boxes 1 to 3) -->
+  <path
+     d="m 100,48 c 0,-5.333333 3.33333,-8 10,-8 h 90 c 6.66667,0 10,-1.666667 10,-5 0,3.333333 3.33333,5 10,5 h 80 c 6.66667,0 10,2.666667 10,8"
+     fill="none"
+     stroke="#111111"
+     stroke-width="1.5"
+     id="path2"
+     sodipodi:nodetypes="csscssc" />
+  <!-- Overbrace for NIC (boxes 4 to 6) -->
+  <path
+     d="m 340,48 c 0,-5.333333 3.33333,-8 10,-8 h 90 c 6.66667,0 10,-1.666667 10,-5 0,3.333333 3.33333,5 10,5 h 80 c 6.66667,0 10,2.666667 10,8"
+     fill="none"
+     stroke="#111111"
+     stroke-width="1.5"
+     id="path3"
+     sodipodi:nodetypes="csscssc" />
+  <!-- Top Hex Boxes (01 : 23 : 45 : 67 : 89 : AB) -->
+  <!-- Box 1: 01 -->
+  <rect
+     x="100"
+     y="52"
+     width="50"
+     height="38"
+     fill="#ffffff"
+     stroke="#111111"
+     stroke-width="1.6"
+     rx="2"
+     id="rect3" />
+  <text
+     x="125"
+     y="77"
+     font-size="18px"
+     font-family="'DejaVu Sans Mono', 'Courier New', monospace"
+     font-weight="bold"
+     fill="#111111"
+     text-anchor="middle"
+     id="text3">01</text>
+  <text
+     x="165"
+     y="77"
+     font-size="18px"
+     font-family="'DejaVu Sans Mono', 'Courier New', monospace"
+     font-weight="bold"
+     fill="#111111"
+     text-anchor="middle"
+     id="text4">:</text>
+  <!-- Box 2: 23 -->
+  <rect
+     x="180"
+     y="52"
+     width="50"
+     height="38"
+     fill="#ffffff"
+     stroke="#111111"
+     stroke-width="1.6"
+     rx="2"
+     id="rect4" />
+  <text
+     x="205"
+     y="77"
+     font-size="18px"
+     font-family="'DejaVu Sans Mono', 'Courier New', monospace"
+     font-weight="bold"
+     fill="#111111"
+     text-anchor="middle"
+     id="text5">C3</text>
+  <text
+     x="245"
+     y="77"
+     font-size="18px"
+     font-family="'DejaVu Sans Mono', 'Courier New', monospace"
+     font-weight="bold"
+     fill="#111111"
+     text-anchor="middle"
+     id="text6">:</text>
+  <!-- Box 3: 45 -->
+  <rect
+     x="260"
+     y="52"
+     width="50"
+     height="38"
+     fill="#ffffff"
+     stroke="#111111"
+     stroke-width="1.6"
+     rx="2"
+     id="rect6" />
+  <text
+     x="285"
+     y="77"
+     font-size="18px"
+     font-family="'DejaVu Sans Mono', 'Courier New', monospace"
+     font-weight="bold"
+     fill="#111111"
+     text-anchor="middle"
+     id="text7">F0</text>
+  <text
+     x="325"
+     y="77"
+     font-size="18px"
+     font-family="'DejaVu Sans Mono', 'Courier New', monospace"
+     font-weight="bold"
+     fill="#111111"
+     text-anchor="middle"
+     id="text8">:</text>
+  <!-- Box 4: 67 -->
+  <rect
+     x="340"
+     y="52"
+     width="50"
+     height="38"
+     fill="#ffffff"
+     stroke="#111111"
+     stroke-width="1.6"
+     rx="2"
+     id="rect8" />
+  <text
+     x="365"
+     y="77"
+     font-size="18px"
+     font-family="'DejaVu Sans Mono', 'Courier New', monospace"
+     font-weight="bold"
+     fill="#111111"
+     text-anchor="middle"
+     id="text9">67</text>
+  <text
+     x="405"
+     y="77"
+     font-size="18px"
+     font-family="'DejaVu Sans Mono', 'Courier New', monospace"
+     font-weight="bold"
+     fill="#111111"
+     text-anchor="middle"
+     id="text10">:</text>
+  <!-- Box 5: 89 -->
+  <rect
+     x="420"
+     y="52"
+     width="50"
+     height="38"
+     fill="#ffffff"
+     stroke="#111111"
+     stroke-width="1.6"
+     rx="2"
+     id="rect10" />
+  <text
+     x="445"
+     y="77"
+     font-size="18px"
+     font-family="'DejaVu Sans Mono', 'Courier New', monospace"
+     font-weight="bold"
+     fill="#111111"
+     text-anchor="middle"
+     id="text11">2D</text>
+  <text
+     x="485"
+     y="77"
+     font-size="18px"
+     font-family="'DejaVu Sans Mono', 'Courier New', monospace"
+     font-weight="bold"
+     fill="#111111"
+     text-anchor="middle"
+     id="text12">:</text>
+  <!-- Box 6: AB -->
+  <rect
+     x="500"
+     y="52"
+     width="50"
+     height="38"
+     fill="#ffffff"
+     stroke="#111111"
+     stroke-width="1.6"
+     rx="2"
+     id="rect12" />
+  <text
+     x="525"
+     y="77"
+     font-size="18px"
+     font-family="'DejaVu Sans Mono', 'Courier New', monospace"
+     font-weight="bold"
+     fill="#111111"
+     text-anchor="middle"
+     id="text13">CE</text>
+  <!-- Funnel Lines from Box 1 (01) to Binary Box -->
+  <!-- Binary Box -->
+  <rect
+     x="68.669434"
+     y="138.89478"
+     width="115.18295"
+     height="42.238605"
+     fill="#ffffff"
+     stroke="#111111"
+     stroke-width="1.3614"
+     rx="1.4397869"
+     id="rect14" />
+  <text
+     x="80.788734"
+     y="166.01408"
+     font-size="18px"
+     font-family="'DejaVu Sans Mono', 'Courier New', monospace"
+     fill="#111111"
+     id="text14">000000<tspan
+   fill="#cc0000"
+   font-weight="bold"
+   id="tspan14">01</tspan></text>
+  <!-- Right Arrow for Unicast / Multicast Bit (Bit 0) -->
+  <line
+     x1="259.84897"
+     y1="159.75514"
+     x2="171.84897"
+     y2="159.75514"
+     stroke="#111111"
+     stroke-width="1.4"
+     marker-end="url(#arrow)"
+     id="line15" />
+  <text
+     x="269.84897"
+     y="164.75514"
+     font-size="15px"
+     fill="#111111"
+     id="text15">Unicast/Multicast Bit</text>
+  <!-- Bottom Up Arrow for Universal / Local Bit (Bit 1) -->
+  <line
+     x1="151.37546"
+     y1="233.3174"
+     x2="151.37546"
+     y2="171.3174"
+     stroke="#111111"
+     stroke-width="1.4"
+     marker-end="url(#arrow)"
+     id="line16" />
+  <text
+     x="73.868866"
+     y="250.98692"
+     font-size="15px"
+     fill="#111111"
+     id="text16">Universal/Local Bit</text>
+  <path
+     style="fill:none;fill-opacity:1;stroke:#000000;stroke-opacity:1"
+     d="M 100.88732,89.901408 69.028169,139.70423"
+     id="path16" />
+  <path
+     style="fill:none;fill-opacity:1;stroke:#000000;stroke-opacity:1"
+     d="m 149.59155,89.71831 34.23944,49.98592"
+     id="path17" />
+</svg>

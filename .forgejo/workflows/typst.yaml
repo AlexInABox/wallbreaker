@@ -1,0 +1,37 @@
+name: Compile Typst Paper
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: https://github.com/actions/checkout@v6
+
+      - name: Install Fonts
+        run: |
+          echo "ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true" | sudo debconf-set-selections
+          sudo apt-get update
+          sudo apt-get install -y ttf-mscorefonts-installer
+
+      - name: Install Typst
+        run: |
+          wget -q https://github.com/typst/typst/releases/latest/download/typst-x86_64-unknown-linux-musl.tar.xz
+          tar -xf typst-x86_64-unknown-linux-musl.tar.xz
+          sudo mv typst-x86_64-unknown-linux-musl/typst /usr/local/bin/
+
+      - name: Compile main.typ
+        run: typst compile paper/main.typ paper/main.pdf
+
+      - name: Commit and Push
+        run: |
+          git config --local user.email "actions@forgejo.org"
+          git config --local user.name "Forgejo Actions"
+          git add paper/main.pdf
+          # Use [skip ci] to prevent an infinite loop of workflow triggers!
+          git commit -m "chore: update compiled paper [skip ci]" || echo "No changes to commit"
+          git push

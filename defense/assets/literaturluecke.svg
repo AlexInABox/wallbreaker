@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 500" font-family="Berlin Type Office, Arial, sans-serif">
+  <rect width="1000" height="500" fill="white"/>
+
+  <!-- theme card 1 -->
+  <g>
+    <rect x="30" y="50" width="270" height="150" rx="4" fill="white" stroke="#666" stroke-width="1.5"/>
+    <path d="M260 50 L300 50 L260 90 Z" fill="#e8e8e8" stroke="#666" stroke-width="1"/>
+    <text x="48" y="92" font-size="20" font-weight="bold" fill="#002266">Wi-Fi-Sniffing</text>
+    <text x="48" y="128" font-size="16" fill="#8a6d00">nicht aktuell</text>
+  </g>
+
+  <!-- theme card 2 -->
+  <g>
+    <rect x="360" y="50" width="270" height="150" rx="4" fill="white" stroke="#666" stroke-width="1.5"/>
+    <path d="M590 50 L630 50 L590 90 Z" fill="#e8e8e8" stroke="#666" stroke-width="1"/>
+    <text x="378" y="92" font-size="20" font-weight="bold" fill="#002266">RSSI-Ortung</text>
+    <text x="378" y="128" font-size="16" fill="#8a6d00">nur 2,4 GHz</text>
+  </g>
+
+  <!-- theme card 3 -->
+  <g>
+    <rect x="690" y="50" width="270" height="150" rx="4" fill="white" stroke="#666" stroke-width="1.5"/>
+    <path d="M920 50 L960 50 L920 90 Z" fill="#e8e8e8" stroke="#666" stroke-width="1"/>
+    <text x="708" y="92" font-size="20" font-weight="bold" fill="#002266">Indoor-Lokalisierung</text>
+    <text x="708" y="128" font-size="16" fill="#8a6d00">nicht mobil</text>
+  </g>
+
+  <!-- arrows down to the gap box -->
+  <line x1="165" y1="200" x2="165" y2="248" stroke="#888" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <line x1="495" y1="200" x2="495" y2="248" stroke="#888" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <line x1="825" y1="200" x2="825" y2="248" stroke="#888" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <!-- the gap box -->
+  <rect x="80" y="252" width="840" height="210" rx="8" fill="#fff7e6" stroke="#b8860b" stroke-width="2" stroke-dasharray="9,6"/>
+  <text x="500" y="326" font-size="20" font-weight="bold" fill="#002266" text-anchor="middle">Lückenhafte Betrachtung meines spezifischen Falls</text>
+  <text x="500" y="362" font-size="20" font-weight="bold" fill="#002266" text-anchor="middle">der passiven Indoor-WLAN-Analyse,</text>
+  <text x="500" y="398" font-size="20" font-weight="bold" fill="#002266" text-anchor="middle">Geräte anhand von RSSI zu orten</text>
+
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0 0 L8 3 L0 6 Z" fill="#888"/>
+    </marker>
+  </defs>
+</svg>

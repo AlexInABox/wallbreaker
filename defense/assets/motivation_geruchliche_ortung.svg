@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="40 110 430 390"
+   font-family="Berlin Type Office, Arial, sans-serif"
+   version="1.1"
+   id="svg9"
+   sodipodi:docname="motivation_geruchliche_ortung.svg"
+   inkscape:version="1.4.3 (0d15f75042, 2025-12-25)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs9" />
+  <sodipodi:namedview
+     id="namedview9"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="2.5153846"
+     inkscape:cx="214.87768"
+     inkscape:cy="195"
+     inkscape:window-width="3440"
+     inkscape:window-height="1368"
+     inkscape:window-x="1921"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg9" />
+  <rect
+     x="40"
+     y="110"
+     width="430"
+     height="390"
+     fill="#f4f6fb"
+     stroke="#002266"
+     stroke-width="2"
+     id="rect1" />
+  <text
+     x="255"
+     y="142"
+     font-size="18"
+     font-weight="bold"
+     fill="#002266"
+     text-anchor="middle"
+     id="text1">Geruchliche Ortung</text>
+  <rect
+     x="390"
+     y="175"
+     width="44"
+     height="250"
+     fill="#b9bcc4"
+     stroke="#666"
+     stroke-width="1"
+     id="rect2" />
+  <rect
+     x="399"
+     y="278"
+     width="26"
+     height="44"
+     rx="4"
+     fill="#002266"
+     id="rect3" />
+  <text
+     x="412"
+     y="345"
+     font-size="10"
+     fill="#002266"
+     text-anchor="middle"
+     id="text3">Asservat</text>
+  <rect
+     x="404"
+     y="286"
+     width="16"
+     height="30"
+     rx="2"
+     fill="white"
+     id="rect4" />
+  <path
+     d="M388 275 q -48 -12 -96 0 q -48 12 -96 0"
+     fill="none"
+     stroke="#999"
+     stroke-width="3"
+     stroke-dasharray="6 5"
+     id="path4" />
+  <path
+     d="M388 325 q -48 12 -96 0 q -48 -12 -96 0"
+     fill="none"
+     stroke="#999"
+     stroke-width="3"
+     stroke-dasharray="6 5"
+     id="path5" />
+  <circle
+     cx="170"
+     cy="300"
+     r="26"
+     fill="#888"
+     id="circle5" />
+  <text
+     x="170"
+     y="304"
+     font-size="12"
+     fill="white"
+     text-anchor="middle"
+     id="text5">Hund</text>
+  <text
+     x="255"
+     y="362"
+     font-size="13"
+     fill="#c0392b"
+     text-anchor="middle"
+     id="text6">Geruch am Mauerwerk</text>
+  <text
+     x="255"
+     y="380"
+     font-size="13"
+     fill="#c0392b"
+     text-anchor="middle"
+     id="text7">gedämpft</text>
+  <text
+     x="255"
+     y="470"
+     font-size="15px"
+     fill="#333333"
+     text-anchor="middle"
+     id="text8">Gehindert bei baulich</text>
+  <text
+     x="255"
+     y="490"
+     font-size="15"
+     fill="#333"
+     text-anchor="middle"
+     id="text9">verdeckten Asservaten</text>
+</svg>
